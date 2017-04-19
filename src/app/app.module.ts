@@ -4,10 +4,18 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { AnalogClockComponent } from './analog-clock/analog-clock.component';
+import { TextClockComponent } from './text-clock/text-clock.component';
+import { DigitalClockComponent } from './digital-clock/digital-clock.component';
+import { DigitalClockDigitComponent } from './digital-clock-digit/digital-clock-digit.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AnalogClockComponent,
+    TextClockComponent,
+    DigitalClockComponent,
+    DigitalClockDigitComponent
   ],
   imports: [
     BrowserModule,
