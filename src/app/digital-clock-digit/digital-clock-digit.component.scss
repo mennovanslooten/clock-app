@@ -1,0 +1,124 @@
+
+[class^="digital-clock-digit"] {
+  width: 9em;
+  height: 15em;
+  position: relative;
+  transform: skewX(-6deg);
+  /*margin-right: 2em;*/
+  /*background: purple;*/
+  /*outline: 1px solid purple;*/
+}
+
+
+[class^="digital-clock-bar"] {
+  background: #CC0000;
+  opacity: 0.1;
+  position: absolute;
+  border-radius: .5em;
+  // transition: opacity 0.2s linear;
+}
+
+
+.digital-clock-bar--0,
+.digital-clock-bar--3,
+.digital-clock-bar--6 {
+  width: 5em;
+  height: 1em;
+}
+
+.digital-clock-bar--1,
+.digital-clock-bar--2,
+.digital-clock-bar--4,
+.digital-clock-bar--5 {
+  width: 1em;
+  height: 5em;
+}
+
+.digital-clock-bar--0 {
+  top: 1em;
+  left: 2em;
+}
+
+.digital-clock-bar--1 {
+  top: 2em;
+  left: 1em;
+}
+
+.digital-clock-bar--2 {
+  top: 2em;
+  left: 7em;
+}
+
+.digital-clock-bar--3 {
+  top: 7em;
+  left: 2em;
+}
+
+.digital-clock-bar--4 {
+  top: 8em;
+  left: 1em;
+}
+
+.digital-clock-bar--5 {
+  top: 8em;
+  left: 7em;
+}
+
+.digital-clock-bar--6 {
+  top: 13em;
+  left: 2em;
+}
+
+.digital-clock-digit--0 .digital-clock-bar--0,
+.digital-clock-digit--0 .digital-clock-bar--1,
+.digital-clock-digit--0 .digital-clock-bar--2,
+.digital-clock-digit--0 .digital-clock-bar--4,
+.digital-clock-digit--0 .digital-clock-bar--5,
+.digital-clock-digit--0 .digital-clock-bar--6,
+.digital-clock-digit--1 .digital-clock-bar--2,
+.digital-clock-digit--1 .digital-clock-bar--5,
+.digital-clock-digit--2 .digital-clock-bar--0,
+.digital-clock-digit--2 .digital-clock-bar--2,
+.digital-clock-digit--2 .digital-clock-bar--3,
+.digital-clock-digit--2 .digital-clock-bar--4,
+.digital-clock-digit--2 .digital-clock-bar--6,
+.digital-clock-digit--3 .digital-clock-bar--0,
+.digital-clock-digit--3 .digital-clock-bar--2,
+.digital-clock-digit--3 .digital-clock-bar--3,
+.digital-clock-digit--3 .digital-clock-bar--5,
+.digital-clock-digit--3 .digital-clock-bar--6,
+.digital-clock-digit--4 .digital-clock-bar--1,
+.digital-clock-digit--4 .digital-clock-bar--2,
+.digital-clock-digit--4 .digital-clock-bar--3,
+.digital-clock-digit--4 .digital-clock-bar--5,
+.digital-clock-digit--5 .digital-clock-bar--0,
+.digital-clock-digit--5 .digital-clock-bar--1,
+.digital-clock-digit--5 .digital-clock-bar--3,
+.digital-clock-digit--5 .digital-clock-bar--5,
+.digital-clock-digit--5 .digital-clock-bar--6,
+.digital-clock-digit--6 .digital-clock-bar--0,
+.digital-clock-digit--6 .digital-clock-bar--1,
+.digital-clock-digit--6 .digital-clock-bar--3,
+.digital-clock-digit--6 .digital-clock-bar--4,
+.digital-clock-digit--6 .digital-clock-bar--5,
+.digital-clock-digit--6 .digital-clock-bar--6,
+.digital-clock-digit--7 .digital-clock-bar--0,
+.digital-clock-digit--7 .digital-clock-bar--2,
+.digital-clock-digit--7 .digital-clock-bar--5,
+.digital-clock-digit--8 .digital-clock-bar--0,
+.digital-clock-digit--8 .digital-clock-bar--1,
+.digital-clock-digit--8 .digital-clock-bar--2,
+.digital-clock-digit--8 .digital-clock-bar--3,
+.digital-clock-digit--8 .digital-clock-bar--4,
+.digital-clock-digit--8 .digital-clock-bar--5,
+.digital-clock-digit--8 .digital-clock-bar--6,
+.digital-clock-digit--9 .digital-clock-bar--0,
+.digital-clock-digit--9 .digital-clock-bar--1,
+.digital-clock-digit--9 .digital-clock-bar--2,
+.digital-clock-digit--9 .digital-clock-bar--3,
+.digital-clock-digit--9 .digital-clock-bar--5,
+.digital-clock-digit--9 .digital-clock-bar--6 {
+  opacity: 1;
+  box-shadow: inset 0 0 2px 1px #F00, 0 0 1em .5em rgba(255,0,0,0.5);
+}
+

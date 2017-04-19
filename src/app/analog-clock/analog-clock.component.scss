@@ -1,0 +1,152 @@
+* {
+  box-sizing: border-box;
+}
+
+
+$size: 1rem;
+
+.analog-clock {
+  width: 20 * $size;
+  height: 20 * $size;
+  position: relative;
+  margin: 2 * $size auto;
+}
+
+.clock-face {
+  width: 20 * $size;
+  height: 20 * $size;
+  border-radius: 10 * $size;
+  border: .2 * $size solid #F00;
+  background: #100;
+}
+
+[class^="clock-hand-hours"] {
+  width: .2 * $size;
+  height: 7.2 * $size;
+  background: #F00;
+  position: absolute;
+  left: 9.9 * $size;
+  top: 4 * $size;
+  transform-origin: .1 * $size 6 * $size;
+  box-shadow: 0 0 .2 * $size black;
+}
+
+[class^="clock-hand-minutes"] {
+  width: .2 * $size;
+  height: 9.2 * $size;
+  background: #F00;
+  position: absolute;
+  left: 9.9 * $size;
+  top: 2 * $size;
+  transform-origin: .1 * $size 8 * $size;
+  box-shadow: 0 0 .2 * $size black;
+  /* transition: transform .5s linear; */
+}
+
+[class^="clock-hand-seconds"] {
+  width: .2 * $size;
+  height: 9.2 * $size;
+  background: #600;
+  position: absolute;
+  left: 9.9 * $size;
+  top: 2 * $size;
+  transform-origin: .1 * $size 8 * $size;
+  box-shadow: 0 0 .2 * $size black;
+  /*transition: transform .05s linear; */
+}
+
+[class^="clock-face-graduation"] {
+  position: absolute;
+  left: 9.9 * $size;
+  top: .4 * $size;
+  background: #600;
+  width: .2 * $size;
+  transform-origin: .1 * $size 9.6 * $size;
+}
+
+[class^="clock-face-number"] {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 2 * $size;
+  position: absolute;
+  width: 2 * $size;
+  line-height: 2 * $size;
+  top: 1.5 * $size;
+  left: 9.0 * $size;
+  height: 8.5 * $size;
+  color: #600;
+  transform-origin: bottom;
+  text-align: center;
+  /*background: yellow;*/
+
+  span {
+    position: absolute;
+    width: 2 * $size;
+    height: 2 * $size;
+    /*background: purple;*/
+    transform-origin: 50% 50%;
+    left: 0;
+    top: 0;
+  }
+
+}
+
+
+.graduation-large {
+  height: .5 * $size;
+}
+
+.graduation-medium {
+  height: 1 * $size;
+}
+
+.graduation-small {
+  height: .2 * $size;
+}
+
+
+
+.clock-face-number--3 {
+  transform: rotate(90deg);
+}
+
+.clock-face-number--3 span {
+  transform: rotate(-90deg);
+}
+
+.clock-face-number--6 {
+  transform: rotate(180deg);
+}
+
+.clock-face-number--6 span {
+  transform: rotate(-180deg);
+}
+
+.clock-face-number--9 {
+  transform: rotate(270deg);
+}
+
+.clock-face-number--9 span {
+  transform: rotate(-270deg);
+}
+
+
+
+
+@for $i from 0 to 60 {
+  .clock-face-graduation--#{$i},
+  .clock-hand-seconds--#{$i},
+  .clock-hand-minutes--#{$i} {
+    transform: rotate($i * 6deg);
+  }
+}
+
+@for $i from 0 to 24 {
+  @for $j from 0 to 60 {
+    $degrees: ($i % 12) * 30;
+    $degrees: $degrees + $j / 2;
+
+    .clock-hand-hours--#{$i}--#{$j} {
+      transform: rotate(#{$degrees}deg);
+    }
+  }
+}
