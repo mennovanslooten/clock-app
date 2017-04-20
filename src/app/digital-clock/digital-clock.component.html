@@ -1,19 +1,5 @@
 <div class="digital-clock">
-  <app-digital-clock-digit [digit]="digits[0]"></app-digital-clock-digit>
-  <app-digital-clock-digit [digit]="digits[1]"></app-digital-clock-digit>
-
-  <div class="digital-clock-separator" [class.digital-clock-separator--off]="digits[5] % 2"></div>
-
-  <app-digital-clock-digit [digit]="digits[2]"></app-digital-clock-digit>
-  <app-digital-clock-digit [digit]="digits[3]"></app-digital-clock-digit>
-
-  <!--<div class="digital-clock-separator" [class.digital-clock-separator--off]="digits[5] % 2"></div>
-
-  <app-digital-clock-digit [digit]="digits[4]"></app-digital-clock-digit>
-  <app-digital-clock-digit [digit]="digits[5]"></app-digital-clock-digit>-->
-
-  <!--<div class="digital-clock-separator"></div>
-
-  <app-digital-clock-digit [digit]="digits[6]"></app-digital-clock-digit>
-  <app-digital-clock-digit [digit]="digits[7]"></app-digital-clock-digit>-->
+  <app-digital-clock-digit [digit]="hours"></app-digital-clock-digit>
+  <div class="digital-clock-separator" [class.digital-clock-separator--off]="seconds % 2"></div>
+  <app-digital-clock-digit [digit]="minutes"></app-digital-clock-digit>
 </div>
