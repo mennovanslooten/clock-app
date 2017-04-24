@@ -10,13 +10,12 @@
   width: 5em;
   height: 15em;
   position: relative;
-  /*background: orange;*/
   transform: skewX(-6deg);
+  transition: opacity 0.2s linear;
 }
 
 .digital-clock-separator--off {
   opacity: 0.1;
-  transition: opacity 0.2s linear;
 }
 
 .digital-clock-separator::before,
