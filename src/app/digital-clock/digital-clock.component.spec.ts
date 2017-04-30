@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DigitalClockComponent } from './digital-clock.component';
+import { DigitalClockDigitComponent } from '../digital-clock-digit/digital-clock-digit.component';
 
 describe('DigitalClockComponent', () => {
   let component: DigitalClockComponent;
@@ -8,7 +9,7 @@ describe('DigitalClockComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DigitalClockComponent ]
+      declarations: [ DigitalClockComponent, DigitalClockDigitComponent ]
     })
     .compileComponents();
   }));
