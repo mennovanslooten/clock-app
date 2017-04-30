@@ -1,6 +1,6 @@
 <div class="text-clock">
-  <span>{{hours}}</span>
-  <span>{{minutes}}</span>
-  <span>{{seconds}}</span>
-  <span>{{centiseconds}}</span>
+  <span>{{timeService.hoursStream | async | number:'2.0-0'}}</span>
+  <span>{{timeService.minutesStream | async | number:'2.0-0'}}</span>
+  <span>{{timeService.secondsStream | async | number:'2.0-0'}}</span>
+  <span>{{timeService.centisecondsStream | async | number:'2.0-0'}}</span>
 </div>

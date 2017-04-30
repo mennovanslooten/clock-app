@@ -18,8 +18,8 @@
     <div *ngFor="let num of [51,52,53,54, 56,57,58,59]" class="clock-face-graduation--{{num}} graduation-small"></div>
   </div>
 
-  <div class="clock-hand-hours--{{hours}}--{{minutes}}"></div>
-  <div class="clock-hand-minutes--{{minutes}}"></div>
-  <div class="clock-hand-seconds--{{seconds}}"></div>
+  <div class="clock-hand-hours--{{timeService.hoursStream | async}}--{{timeService.minutesStream | async}}"></div>
+  <div class="clock-hand-minutes--{{timeService.minutesStream | async}}"></div>
+  <div class="clock-hand-seconds--{{timeService.secondsStream | async}}"></div>
 
 </div>
