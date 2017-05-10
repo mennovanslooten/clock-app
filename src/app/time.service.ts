@@ -10,7 +10,7 @@ export class TimeService {
 
   timeStream = new Subject();
   timeout: number;
-  tickDelay: 30; // Milliseconds
+  tickDelay = 30; // Milliseconds
 
   centisecondsStream = this.timeStream.map((date: Date): number => {
     return Math.floor(date.getMilliseconds() / 10);
