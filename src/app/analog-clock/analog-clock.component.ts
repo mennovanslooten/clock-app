@@ -8,6 +8,6 @@ import { TimeService } from '../time.service';
   providers: [TimeService]
 })
 export class AnalogClockComponent {
-  constructor(private timeService: TimeService) {
+  constructor(public timeService: TimeService) {
   }
 }

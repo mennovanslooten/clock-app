@@ -8,7 +8,7 @@ let timeServiceInstance = null;
 @Injectable()
 export class TimeService {
 
-  timeStream = new Subject();
+  timeStream = new Subject<any>();
   timeout: number;
   tickDelay = 30; // Milliseconds
 

@@ -9,7 +9,7 @@ import { TimeService } from '../time.service';
 })
 export class TextClockComponent {
 
-  constructor(private timeService: TimeService) {
+  constructor(public timeService: TimeService) {
   }
 
 }
