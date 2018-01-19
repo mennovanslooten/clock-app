@@ -22,4 +22,10 @@
   <div class="clock-hand-minutes--{{timeService.minutesStream | async}}"></div>
   <div class="clock-hand-seconds--{{timeService.secondsStream | async}}"></div>
 
+  <div class="clock-date">
+    <div class="clock-date-name">{{timeService.daysStream | async}}</div>
+     <div class="clock-date-date">{{timeService.datesStream | async}}</div> 
+    <!-- <div class="clock-date-date">24</div> -->
+  </div>
+
 </div>

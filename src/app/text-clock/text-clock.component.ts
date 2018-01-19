@@ -10,6 +10,9 @@ import { TimeService } from '../time.service';
 export class TextClockComponent {
 
   constructor(public timeService: TimeService) {
+    // timeService.hoursStream.subscribe((h) => console.log('hours', h));
+    // timeService.minutesStream.subscribe((h) => console.log('minutes', h));
+    // timeService.secondsStream.subscribe((h) => console.log('seconds', h));
   }
 
 }

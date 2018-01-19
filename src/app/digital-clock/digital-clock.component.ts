@@ -9,14 +9,6 @@ import { TimeService } from '../time.service';
 })
 
 export class DigitalClockComponent {
-  seconds: number;
-
   constructor(public timeService: TimeService) {
-
-    timeService.secondsStream.subscribe((seconds: number) => {
-      this.seconds = seconds;
-    });
-
   }
-
 }

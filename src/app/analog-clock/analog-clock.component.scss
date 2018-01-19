@@ -6,6 +6,7 @@
 $size: 1.5vw;
 
 .analog-clock {
+  font-family: Helvetica, Arial, sans-serif;
   width: 20 * $size;
   height: 20 * $size;
   position: relative;
@@ -29,6 +30,7 @@ $size: 1.5vw;
   top: 4 * $size;
   transform-origin: .1 * $size 6 * $size;
   box-shadow: 0 0 .2 * $size black;
+  z-index: 1;
 }
 
 [class^="clock-hand-minutes"] {
@@ -40,6 +42,7 @@ $size: 1.5vw;
   top: 2 * $size;
   transform-origin: .1 * $size 8 * $size;
   box-shadow: 0 0 .2 * $size black;
+  z-index: 2;
   /* transition: transform .5s linear; */
 }
 
@@ -52,6 +55,7 @@ $size: 1.5vw;
   top: 2 * $size;
   transform-origin: .1 * $size 8 * $size;
   box-shadow: 0 0 .2 * $size black;
+  z-index: 3;
   /*transition: transform .05s linear; */
 }
 
@@ -65,7 +69,6 @@ $size: 1.5vw;
 }
 
 [class^="clock-face-number"] {
-  font-family: Helvetica, Arial, sans-serif;
   font-size: 2 * $size;
   position: absolute;
   width: 2 * $size;
@@ -90,6 +93,33 @@ $size: 1.5vw;
 
 }
 
+.clock-date {
+  position: absolute;
+  top: 9.25 * $size;
+  right: 2 * $size;
+  background: black;
+  border: .1 * $size solid #600;
+  border-radius: .2 * $size;
+  color: #600;
+  // width: 4 * $size;
+  display: flex;
+  line-height: 1.25 * $size;
+  z-index: 0;
+
+  div {
+    text-align: center;
+  }
+
+  .clock-date-name {
+    width: 2.5 * $size;
+    text-transform: uppercase;
+  }
+
+  .clock-date-date {
+    width: 1.25 * $size;
+    border-left: .1 * $size solid #600;
+  }
+}
 
 .graduation-large {
   height: .5 * $size;
