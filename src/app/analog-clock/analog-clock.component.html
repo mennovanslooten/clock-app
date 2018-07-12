@@ -1,7 +1,9 @@
 <div class="analog-clock">
   <div class="clock-face">
     <!-- Numbers -->
-    <div *ngFor="let num of [12,3,6,9]; let i = index;" class="clock-face-number--{{num}}"><span>{{num}}</span></div>
+    <div *ngFor="let num of [12,3,6,9]; let i = index;" class="clock-face-number--{{num}}">
+      <span>{{num}}</span>
+    </div>
 
     <!-- 4th graduations -->
     <div *ngFor="let num of [0,15,30,45]" class="clock-face-graduation--{{num}} graduation-large"></div>
@@ -18,14 +20,13 @@
     <div *ngFor="let num of [51,52,53,54, 56,57,58,59]" class="clock-face-graduation--{{num}} graduation-small"></div>
   </div>
 
-  <div class="clock-hand-hours--{{timeService.hours$ | async}}--{{timeService.minutes$ | async}}"></div>
-  <div class="clock-hand-minutes--{{timeService.minutes$ | async}}"></div>
-  <div class="clock-hand-seconds--{{timeService.seconds$ | async}}"></div>
+  <div class="clock-hand-hours clock-hand-hours--{{timeService.$hours | async}}--{{timeService.$minutes | async}}"></div>
+  <div class="clock-hand-minutes clock-hand-minutes--{{timeService.$minutes | async}}"></div>
+  <div class="clock-hand-seconds clock-hand-seconds--{{timeService.$seconds | async}}"></div>
 
   <div class="clock-date">
-    <div class="clock-date-name">{{timeService.days$ | async}}</div>
-     <div class="clock-date-date">{{timeService.dates$ | async}}</div> 
-    <!-- <div class="clock-date-date">24</div> -->
+    <div class="clock-date-weekday">{{timeService.$weekdays | async}}</div>
+    <div class="clock-date-day">{{timeService.$days | async}}</div>
   </div>
 
 </div>

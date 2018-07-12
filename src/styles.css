@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+  background: black;
+  overflow: hidden;
+  font-family: 'Monaco', 'Andale Mono', monospace;
+  font-size: 16px;
+}
+
+p {}

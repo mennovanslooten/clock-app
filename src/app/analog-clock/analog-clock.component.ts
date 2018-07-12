@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TimeService } from '../time.service';
 
 @Component({
-  selector: 'app-analog-clock',
-  styleUrls: ['analog-clock.component.scss'],
-  templateUrl: 'analog-clock.component.html',
-  providers: [TimeService]
+    selector: 'app-analog-clock',
+    templateUrl: './analog-clock.component.html',
+    styleUrls: ['./analog-clock.component.scss'],
 })
-export class AnalogClockComponent {
-  constructor(public timeService: TimeService) {
-  }
+export class AnalogClockComponent implements OnInit {
+    constructor(public timeService: TimeService) {}
+
+    ngOnInit() {}
 }

@@ -1,63 +1,102 @@
 import { Injectable } from '@angular/core';
-import { Subject, Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/observable';
+import { fromEvent } from 'rxjs/observable/fromEvent';
+import { interval } from 'rxjs/observable/interval';
+import { map } from 'rxjs/operators/map';
+import { startWith } from 'rxjs/operators/startWith';
+import { withLatestFrom } from 'rxjs/operators/withLatestFrom';
+import { filter } from 'rxjs/operators/filter';
+import { share } from 'rxjs/operators/share';
+import { distinctUntilChanged } from 'rxjs/operators/distinctUntilChanged';
 
-let timeServiceInstance = null;
+const now = new Date();
 
 @Injectable()
 export class TimeService {
+    fps = 10;
 
-  tickDelay = 1000 / 30; // Milliseconds
-  visibility$ = Observable.fromEvent(document, 'visibilitychange')
-    .map(() => document.visibilityState === 'visible')
-    .startWith(true);
+    tickDelay = 1000 / this.fps;
 
-  // Only emit time$ while document is visible
-  time$ = Observable.interval(this.tickDelay) // emits tick
-    .withLatestFrom(this.visibility$) // emits [tick, isVisble]
-    .filter(([, b]) => b) // emits [tick, isVisbible] when isVisible === true
-    .map(() => new Date) // emits Date when isVisible === true
-    .share();
+    $visibility: Observable<boolean> = fromEvent(
+        document,
+        'visibilitychange'
+    ).pipe(map(() => document.visibilityState === 'visible'), startWith(true));
 
-  centiseconds$ = this.time$
-    .map((date: Date): number => {
-      return Math.floor(date.getMilliseconds() / 10);
-    });
+    // Only emit $time while document is visible
+    $time: Observable<Date> = interval(this.tickDelay) // emits tick
+        .pipe(
+            withLatestFrom(this.$visibility), // emits [tick, isVisble]
+            filter(([, b]) => b), // emits [tick, isVisbible] when isVisible === true
+            // map(() => now), // emits Date when isVisible === true
+            map(() => new Date()), // emits Date when isVisible === true
+            share()
+        );
 
-  seconds$ = this.time$
-    .map((date: Date): number => date.getSeconds())
-    .distinctUntilChanged();
+    $centiseconds: Observable<number> = this.$time.pipe(
+        map((date: Date): number => {
+            return Math.floor(date.getMilliseconds() / 10);
+        })
+    );
 
-  minutes$ = this.time$
-    .map((date: Date): number => date.getMinutes())
-    .distinctUntilChanged();
+    $seconds: Observable<number> = this.$time.pipe(
+        map((date: Date): number => date.getSeconds()),
+        distinctUntilChanged()
+    );
 
-  hours$ = this.time$
-    .map((date: Date): number => date.getHours())
-    .distinctUntilChanged();
+    $minutes: Observable<number> = this.$time.pipe(
+        map((date: Date): number => date.getMinutes()),
+        distinctUntilChanged()
+    );
 
-  dates$ = this.time$
-    .map((date: Date): number => date.getDate())
-    .distinctUntilChanged();
+    $hours: Observable<number> = this.$time.pipe(
+        map((date: Date): number => date.getHours()),
+        distinctUntilChanged()
+    );
 
-  days$ = this.time$.map((date: Date): string => {
-    var dayNamesShort = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    var dayNamesLong = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    var dayIndex = date.getDay();
-    return dayNamesShort[dayIndex];
-    // return {
-    //   dayNameShort: dayNamesShort[dayIndex],
-    //   dayNameLong: dayNamesLong[dayIndex],
-    // };
-  }).distinctUntilChanged();
+    $days: Observable<number> = this.$time.pipe(
+        map((date: Date): number => date.getDate()),
+        distinctUntilChanged()
+    );
 
-  startDate = new Date();
+    $months: Observable<number> = this.$time.pipe(
+        map((date: Date): number => date.getMonth() + 1),
+        distinctUntilChanged()
+    );
 
-  constructor() {
-    if (timeServiceInstance) {
-      return timeServiceInstance;
+    $years: Observable<number> = this.$time.pipe(
+        map((date: Date): number => date.getFullYear()),
+        distinctUntilChanged()
+    );
+
+    $weekdays: Observable<string> = this.$time.pipe(
+        map((date: Date): string => {
+            const dayNamesShort = [
+                'Sun',
+                'Mon',
+                'Tue',
+                'Wed',
+                'Thu',
+                'Fri',
+                'Sat',
+            ];
+            const dayNamesLong = [
+                'Sunday',
+                'Monday',
+                'Tuesday',
+                'Wednesday',
+                'Thursday',
+                'Friday',
+                'Saturday',
+            ];
+            const dayIndex = date.getDay();
+            return dayNamesShort[dayIndex];
+        }),
+        distinctUntilChanged()
+    );
+
+    constructor() {
+        // this.$visibility.subscribe(isVisible =>
+        //     console.log(`Visibility: ${isVisible} on `, new Date().toString())
+        // );
     }
-
-    timeServiceInstance = this;
-  }
-
 }
