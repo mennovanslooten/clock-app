@@ -1,3 +1,4 @@
+$color: #0F0;
 
 [class^="digital-clock-digit"] {
   width: 9em;
@@ -5,18 +6,15 @@
   position: relative;
   transform: skewX(-6deg);
   display: inline-block;
-  /*margin-right: 2em;*/
-  /*background: purple;*/
-  /*outline: 1px solid purple;*/
 }
 
 
 [class^="digital-clock-bar"] {
-  background: #CC0000;
+  background: darken($color, 10%);
   opacity: 0.1;
   position: absolute;
   border-radius: .5em;
-  // transition: opacity 0.2s linear;
+  transition: opacity 0.1s linear;
 }
 
 
@@ -120,6 +118,6 @@
 .digital-clock-digit--9 .digital-clock-bar--5,
 .digital-clock-digit--9 .digital-clock-bar--6 {
   opacity: 1;
-  box-shadow: inset 0 0 2px 1px #F00, 0 0 1em .5em rgba(255,0,0,0.5);
+  box-shadow: inset 0 0 2px 1px $color, 0 0 1em .5em rgba($color ,0.5);
 }
 

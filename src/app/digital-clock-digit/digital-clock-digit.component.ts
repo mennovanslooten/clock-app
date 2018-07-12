@@ -8,14 +8,4 @@ import { Component, Input } from '@angular/core';
 export class DigitalClockDigitComponent {
   @Input()
   digit: number;
-
-  getTens(num: number): number {
-    return Math.floor(num / 10);
-  }
-
-
-  getOnes(num: number): number {
-    return num % 10;
-  }
-
 }

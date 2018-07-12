@@ -1,7 +1,15 @@
 <div class="digital-clock">
-  <app-digital-clock-digit [digit]="timeService.hoursStream | async"></app-digital-clock-digit>
-  <div class="digital-clock-separator" [class.digital-clock-separator--off]="(timeService.secondsStream | async) % 2"></div>
-  <app-digital-clock-digit [digit]="timeService.minutesStream | async"></app-digital-clock-digit>
-  <div class="digital-clock-separator" [class.digital-clock-separator--off]="(timeService.secondsStream | async) % 2"></div>
-  <app-digital-clock-digit [digit]="timeService.secondsStream | async"></app-digital-clock-digit>
+  <!-- <app-digital-clock-digit [digit]="timeService.hours$ | async"></app-digital-clock-digit>
+  <div class="digital-clock-separator"></div>
+  <app-digital-clock-digit [digit]="timeService.minutes$ | async"></app-digital-clock-digit>
+  <div class="digital-clock-separator" [class.digital-clock-separator--off]="(timeService.seconds$ | async) % 2"></div>
+  <app-digital-clock-digit [digit]="timeService.seconds$ | async"></app-digital-clock-digit> -->
+  <app-digital-clock-digit [digit]="hoursTensDigit$ | async"></app-digital-clock-digit>
+  <app-digital-clock-digit [digit]="hoursOnesDigit$ | async"></app-digital-clock-digit>
+  <div class="digital-clock-separator"></div>
+  <app-digital-clock-digit [digit]="minutesTensDigit$ | async"></app-digital-clock-digit>
+  <app-digital-clock-digit [digit]="minutesOnesDigit$ | async"></app-digital-clock-digit>
+  <div class="digital-clock-separator" [class.digital-clock-separator--off]="(timeService.seconds$ | async) % 2"></div>
+  <app-digital-clock-digit [digit]="secondsTensDigit$ | async"></app-digital-clock-digit>
+  <app-digital-clock-digit [digit]="secondsOnesDigit$ | async"></app-digital-clock-digit>
 </div>

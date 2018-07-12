@@ -7,39 +7,39 @@ let timeServiceInstance = null;
 export class TimeService {
 
   tickDelay = 1000 / 30; // Milliseconds
-  visibilityStream = Observable.fromEvent(document, 'visibilitychange')
+  visibility$ = Observable.fromEvent(document, 'visibilitychange')
     .map(() => document.visibilityState === 'visible')
     .startWith(true);
 
-  // Only emit timeStream while document is visible
-  timeStream = Observable.interval(this.tickDelay) // emits tick
-    .withLatestFrom(this.visibilityStream) // emits [tick, isVisble]
+  // Only emit time$ while document is visible
+  time$ = Observable.interval(this.tickDelay) // emits tick
+    .withLatestFrom(this.visibility$) // emits [tick, isVisble]
     .filter(([, b]) => b) // emits [tick, isVisbible] when isVisible === true
     .map(() => new Date) // emits Date when isVisible === true
     .share();
 
-  centisecondsStream = this.timeStream
+  centiseconds$ = this.time$
     .map((date: Date): number => {
       return Math.floor(date.getMilliseconds() / 10);
     });
 
-  secondsStream = this.timeStream
+  seconds$ = this.time$
     .map((date: Date): number => date.getSeconds())
     .distinctUntilChanged();
 
-  minutesStream = this.timeStream
+  minutes$ = this.time$
     .map((date: Date): number => date.getMinutes())
     .distinctUntilChanged();
 
-  hoursStream = this.timeStream
+  hours$ = this.time$
     .map((date: Date): number => date.getHours())
     .distinctUntilChanged();
 
-  datesStream = this.timeStream
+  dates$ = this.time$
     .map((date: Date): number => date.getDate())
     .distinctUntilChanged();
 
-  daysStream = this.timeStream.map((date: Date): string => {
+  days$ = this.time$.map((date: Date): string => {
     var dayNamesShort = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     var dayNamesLong = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     var dayIndex = date.getDay();
