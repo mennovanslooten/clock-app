@@ -9,11 +9,11 @@ import { filter } from 'rxjs/operators/filter';
 import { share } from 'rxjs/operators/share';
 import { distinctUntilChanged } from 'rxjs/operators/distinctUntilChanged';
 
-const now = new Date();
+const now = new Date(2018, 6, 14, 12, 59, 0);
 
 @Injectable()
 export class TimeService {
-    fps = 10;
+    fps = 30;
 
     tickDelay = 1000 / this.fps;
 

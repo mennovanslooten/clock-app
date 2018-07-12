@@ -1,6 +1,11 @@
 <div class="text-clock">
-  <span>{{timeService.hours$ | async | number:'2.0-0'}}</span>
-  <span>{{timeService.minutes$ | async | number:'2.0-0'}}</span>
-<!-- <span>{{timeService.seconds$ | async | number:'2.0-0'}}</span>
+  <!-- <span>{{timeService.$hours | async | number:'2.0-0'}}</span>
+  <span>{{timeService.$minutes | async | number:'2.0-0'}}</span>
+  <span>{{timeService.$seconds | async | number:'2.0-0'}}</span>
+  <span>{{timeService.$centiseconds | async | number:'2.0-0'}}</span> -->
+  <!-- <span>{{timeService.seconds$ | async | number:'2.0-0'}}</span>
   <span>{{timeService.centiseconds$ | async | number:'2.0-0'}}</span> -->
+  <span>It is
+    <strong>{{$timeString | async}}</strong>
+  </span>
 </div>
