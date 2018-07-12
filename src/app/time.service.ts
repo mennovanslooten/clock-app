@@ -3,13 +3,17 @@ import { Observable } from 'rxjs/observable';
 import { fromEvent } from 'rxjs/observable/fromEvent';
 import { interval } from 'rxjs/observable/interval';
 import { map } from 'rxjs/operators/map';
+import { tap } from 'rxjs/operators/tap';
 import { startWith } from 'rxjs/operators/startWith';
 import { withLatestFrom } from 'rxjs/operators/withLatestFrom';
 import { filter } from 'rxjs/operators/filter';
 import { share } from 'rxjs/operators/share';
 import { distinctUntilChanged } from 'rxjs/operators/distinctUntilChanged';
 
-const now = new Date(2018, 6, 14, 12, 59, 0);
+const now = new Date();
+const start = new Date(2018, 6, 14, 23, 59, 45);
+// const offset = now.valueOf() - start.valueOf();
+const offset = 0;
 
 @Injectable()
 export class TimeService {
@@ -28,7 +32,8 @@ export class TimeService {
             withLatestFrom(this.$visibility), // emits [tick, isVisble]
             filter(([, b]) => b), // emits [tick, isVisbible] when isVisible === true
             // map(() => now), // emits Date when isVisible === true
-            map(() => new Date()), // emits Date when isVisible === true
+            // tap(([i, b]) => console.log(i)), // emits Date when isVisible === true
+            map(() => new Date(new Date().valueOf() - offset)), // emits Date when isVisible === true
             share()
         );
 

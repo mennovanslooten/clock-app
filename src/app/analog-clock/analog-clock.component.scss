@@ -16,7 +16,7 @@
 
 $clock-size: 400px;
 $size: $clock-size / 20;
-$primary-color: #00F;
+$primary-color: #FFF;
 $secondary-color: $primary-color / 2;
 $tertiary-color: $primary-color / 16;
 .analog-clock {
@@ -120,7 +120,7 @@ $tertiary-color: $primary-color / 16;
   right: $clock-size / 10;
   border: $date-border-size solid $secondary-color;
   border-radius: $clock-size / 200;
-  color: $secondary-color; // width: 4 * $size;
+  color: $primary-color;
   display: flex;
   line-height: $date-height - 2 * $date-border-size;
   z-index: 0;
@@ -132,7 +132,7 @@ $tertiary-color: $primary-color / 16;
     text-transform: uppercase;
   }
   .clock-date-day {
-    width: 1.25 * $date-font-size;
+    width: 1.5 * $date-font-size;
     border-left: $date-border-size solid $secondary-color;
   }
   .clock-date-month {
