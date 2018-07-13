@@ -1,6 +1,6 @@
-import { FormControl } from '@angular/forms';
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { TimeService } from './time.service';
+import { toggleFullscreen } from './utils/fullscreen';
 
 @Component({
     selector: 'app-root',
@@ -8,4 +8,13 @@ import { TimeService } from './time.service';
     styleUrls: ['./app.component.scss'],
     providers: [TimeService],
 })
-export class AppComponent {}
+export class AppComponent {
+    rootElement: HTMLElement;
+    constructor(public element: ElementRef) {
+        this.rootElement = element.nativeElement;
+    }
+
+    fullScreen() {
+        toggleFullscreen(this.rootElement);
+    }
+}

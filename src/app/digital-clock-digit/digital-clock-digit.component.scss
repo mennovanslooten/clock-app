@@ -1,70 +1,70 @@
 $color: #F90;
+$grid-size: 8px;
 [class^="digital-clock-digit"] {
-  width: 9em;
-  height: 15em;
+  width: $grid-size * 9;
+  height: $grid-size * 15;
   position: relative;
   transform: skewX(-6deg);
   display: inline-block;
 }
 
 [class^="digital-clock-bar"] {
-  background-color: darken($color, 10%);
-  background-image: linear-gradient(transparent 50%, rgba(255, 255, 255, .25) 50%);
-  background-size: 8px 8px;
+  background-color: darken($color, 10%); // background-image: linear-gradient(transparent 50%, rgba(255, 255, 255, .25) 50%);
+  // background-size: $grid-size $grid-size;
   opacity: 0.1;
   position: absolute;
-  border-radius: .5em;
+  border-radius: $grid-size * .5;
   transition: opacity 0.1s linear;
 }
 
 .digital-clock-bar--0,
 .digital-clock-bar--3,
 .digital-clock-bar--6 {
-  width: 5em;
-  height: 1em;
+  width: $grid-size * 5;
+  height: $grid-size * 1;
 }
 
 .digital-clock-bar--1,
 .digital-clock-bar--2,
 .digital-clock-bar--4,
 .digital-clock-bar--5 {
-  width: 1em;
-  height: 5em;
+  width: $grid-size * 1;
+  height: $grid-size * 5;
 }
 
 .digital-clock-bar--0 {
-  top: 1em;
-  left: 2em;
+  top: $grid-size * 1;
+  left: $grid-size * 2;
 }
 
 .digital-clock-bar--1 {
-  top: 2em;
-  left: 1em;
+  top: $grid-size * 2;
+  left: $grid-size * 1;
 }
 
 .digital-clock-bar--2 {
-  top: 2em;
-  left: 7em;
+  top: $grid-size * 2;
+  left: $grid-size * 7;
 }
 
 .digital-clock-bar--3 {
-  top: 7em;
-  left: 2em;
+  top: $grid-size * 7;
+  left: $grid-size * 2;
 }
 
 .digital-clock-bar--4 {
-  top: 8em;
-  left: 1em;
+  top: $grid-size * 8;
+  left: $grid-size * 1;
 }
 
 .digital-clock-bar--5 {
-  top: 8em;
-  left: 7em;
+  top: $grid-size * 8;
+  left: $grid-size * 7;
 }
 
 .digital-clock-bar--6 {
-  top: 13em;
-  left: 2em;
+  top: $grid-size * 13;
+  left: $grid-size * 2;
 }
 
 .digital-clock-digit--0 .digital-clock-bar--0,
@@ -117,5 +117,5 @@ $color: #F90;
 .digital-clock-digit--9 .digital-clock-bar--5,
 .digital-clock-digit--9 .digital-clock-bar--6 {
   opacity: 1;
-  box-shadow: inset 0 0 2px 1px $color, 0 0 1em .5em rgba($color, 0.5);
+  box-shadow: inset 0 0 ($grid-size / 4) ($grid-size / 8) $color, 0 0 $grid-size .5em rgba($color, 0.5);
 }
