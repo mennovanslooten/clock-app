@@ -1,3 +1,13 @@
+declare global {
+    interface Document {
+        mozFullScreenEnabled: any,
+        msFullscreenEnabled: any,
+        mozFullScreenElement: any,
+        msFullscreenElement: any
+    }
+};
+
+
 const fullscreenEnabled: boolean = !!(
     document.fullscreenEnabled ||
     document.webkitFullscreenEnabled ||
