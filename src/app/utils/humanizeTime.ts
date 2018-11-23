@@ -87,9 +87,9 @@ function getHoursText(hours: number) {
             return 'midnight';
         case 12:
             return 'noon';
-        default:
-            return getNumberText(hours);
     }
+
+    return getNumberText(hours);
 }
 
 function getNextHour(hours: number) {
