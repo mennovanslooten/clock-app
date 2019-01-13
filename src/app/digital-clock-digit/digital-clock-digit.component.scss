@@ -11,10 +11,10 @@ $grid-size: 8px;
 [class^="digital-clock-bar"] {
   background-color: darken($color, 10%); // background-image: linear-gradient(transparent 50%, rgba(255, 255, 255, .25) 50%);
   // background-size: $grid-size $grid-size;
-  opacity: 0.1;
+  filter: brightness(15%);
   position: absolute;
   border-radius: $grid-size * .5;
-  transition: opacity 0.1s linear;
+  transition: filter 0.1s linear;
 }
 
 .digital-clock-bar--0,
@@ -116,6 +116,6 @@ $grid-size: 8px;
 .digital-clock-digit--9 .digital-clock-bar--3,
 .digital-clock-digit--9 .digital-clock-bar--5,
 .digital-clock-digit--9 .digital-clock-bar--6 {
-  opacity: 1;
+  filter: brightness(100%);
   box-shadow: inset 0 0 ($grid-size / 4) ($grid-size / 8) $color, 0 0 $grid-size .5em rgba($color, 0.5);
 }
