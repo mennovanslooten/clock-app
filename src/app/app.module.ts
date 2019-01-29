@@ -26,7 +26,10 @@ const appRoutes: Routes = [
         DigitalClockDigitComponent,
     ],
     imports: [
-        RouterModule.forRoot(appRoutes, { enableTracing: false }),
+        RouterModule.forRoot(appRoutes, {
+            enableTracing: false,
+            useHash: true,
+        }),
         BrowserModule,
         ReactiveFormsModule,
     ],
