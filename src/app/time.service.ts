@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Rx';
 import { fromEvent } from 'rxjs/observable/fromEvent';
 import { interval } from 'rxjs/observable/interval';
 import { map } from 'rxjs/operators/map';
@@ -24,7 +24,10 @@ export class TimeService {
     $visibility: Observable<boolean> = fromEvent(
         document,
         'visibilitychange'
-    ).pipe(map(() => document.visibilityState === 'visible'), startWith(true));
+    ).pipe(
+        map(() => document.visibilityState === 'visible'),
+        startWith(true)
+    );
 
     // Only emit $time while document is visible
     $time: Observable<Date> = interval(this.tickDelay) // emits tick
@@ -38,9 +41,11 @@ export class TimeService {
         );
 
     $centiseconds: Observable<number> = this.$time.pipe(
-        map((date: Date): number => {
-            return Math.floor(date.getMilliseconds() / 10);
-        })
+        map(
+            (date: Date): number => {
+                return Math.floor(date.getMilliseconds() / 10);
+            }
+        )
     );
 
     $seconds: Observable<number> = this.$time.pipe(
@@ -74,28 +79,30 @@ export class TimeService {
     );
 
     $weekdays: Observable<string> = this.$time.pipe(
-        map((date: Date): string => {
-            const dayNamesShort = [
-                'Sun',
-                'Mon',
-                'Tue',
-                'Wed',
-                'Thu',
-                'Fri',
-                'Sat',
-            ];
-            const dayNamesLong = [
-                'Sunday',
-                'Monday',
-                'Tuesday',
-                'Wednesday',
-                'Thursday',
-                'Friday',
-                'Saturday',
-            ];
-            const dayIndex = date.getDay();
-            return dayNamesShort[dayIndex];
-        }),
+        map(
+            (date: Date): string => {
+                const dayNamesShort = [
+                    'Sun',
+                    'Mon',
+                    'Tue',
+                    'Wed',
+                    'Thu',
+                    'Fri',
+                    'Sat',
+                ];
+                const dayNamesLong = [
+                    'Sunday',
+                    'Monday',
+                    'Tuesday',
+                    'Wednesday',
+                    'Thursday',
+                    'Friday',
+                    'Saturday',
+                ];
+                const dayIndex = date.getDay();
+                return dayNamesShort[dayIndex];
+            }
+        ),
         distinctUntilChanged()
     );
 

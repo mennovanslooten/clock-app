@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { TimeService } from '../time.service';
 import { combineLatest } from 'rxjs/observable/combineLatest';
-import { Observable } from 'rxjs/observable';
-import { map } from '../../../node_modules/rxjs/operators';
+import { Observable } from 'rxjs/Rx';
+import { map } from 'rxjs/operators';
 import humanizeTime from '../utils/humanizeTime';
 
 @Component({
