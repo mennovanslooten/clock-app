@@ -9,10 +9,7 @@ describe('TimeService', () => {
         });
     });
 
-    it(
-        'should be created',
-        inject([TimeService], (service: TimeService) => {
-            expect(service).toBeTruthy();
-        })
-    );
+    it('should be created', inject([TimeService], (service: TimeService) => {
+        expect(service).toBeTruthy();
+    }));
 });
