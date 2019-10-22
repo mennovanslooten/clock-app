@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
-import { fromEvent } from 'rxjs/observable/fromEvent';
-import { interval } from 'rxjs/observable/interval';
-import { map } from 'rxjs/operators/map';
-import { tap } from 'rxjs/operators/tap';
-import { startWith } from 'rxjs/operators/startWith';
-import { withLatestFrom } from 'rxjs/operators/withLatestFrom';
-import { filter } from 'rxjs/operators/filter';
-import { share } from 'rxjs/operators/share';
-import { distinctUntilChanged } from 'rxjs/operators/distinctUntilChanged';
+import { Observable, fromEvent, interval } from 'rxjs';
+import {
+    map,
+    tap,
+    startWith,
+    withLatestFrom,
+    filter,
+    share,
+    distinctUntilChanged,
+} from 'rxjs/operators';
 
 const now = new Date();
 const start = new Date(2018, 6, 14, 23, 59, 45);

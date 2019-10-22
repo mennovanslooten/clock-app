@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TimeService } from '../time.service';
-import { map } from 'rxjs/operators/map';
-import { distinctUntilChanged } from 'rxjs/operators/distinctUntilChanged';
+import { map, distinctUntilChanged } from 'rxjs/operators';
 
 function getTens(num: number): number {
     return Math.floor(num / 10);

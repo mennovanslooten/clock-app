@@ -9,8 +9,8 @@
 $clock-size: 400px;
 $size: $clock-size / 20;
 $primary-color: #FFF;
-$secondary-color: $primary-color / 2;
-$tertiary-color: $primary-color / 16;
+$secondary-color: scale-color($primary-color, $lightness: -50%);
+$tertiary-color: scale-color($primary-color, $lightness: -90%);
 .analog-clock {
   font-family: Helvetica, Arial, sans-serif;
   width: $clock-size;

@@ -4,6 +4,8 @@ declare global {
         msFullscreenEnabled: any;
         mozFullScreenElement: any;
         msFullscreenElement: any;
+        webkitFullscreenEnabled: any;
+        webkitFullscreenElement: any;
     }
 }
 
