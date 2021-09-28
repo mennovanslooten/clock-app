@@ -1,10 +1,40 @@
 <div class="digital-clock">
-  <app-digital-clock-digit [digit]="$hoursTensDigit | async"></app-digital-clock-digit>
-  <app-digital-clock-digit [digit]="$hoursOnesDigit | async"></app-digital-clock-digit>
-  <div class="digital-clock-separator"></div>
-  <app-digital-clock-digit [digit]="$minutesTensDigit | async"></app-digital-clock-digit>
-  <app-digital-clock-digit [digit]="$minutesOnesDigit | async"></app-digital-clock-digit>
-  <div class="digital-clock-separator" [class.digital-clock-separator--off]="(timeService.$seconds | async) % 2"></div>
-  <app-digital-clock-digit [digit]="$secondsTensDigit | async"></app-digital-clock-digit>
-  <app-digital-clock-digit [digit]="$secondsOnesDigit | async"></app-digital-clock-digit>
+    <app-digital-clock-digit
+        [digit]="$hoursTensDigit | async"
+    ></app-digital-clock-digit>
+    <app-digital-clock-digit
+        [digit]="$hoursOnesDigit | async"
+    ></app-digital-clock-digit>
+    <div class="digital-clock-separator"></div>
+    <app-digital-clock-digit
+        [digit]="$minutesTensDigit | async"
+    ></app-digital-clock-digit>
+    <app-digital-clock-digit
+        [digit]="$minutesOnesDigit | async"
+    ></app-digital-clock-digit>
+    <div
+        class="digital-clock-separator"
+        [class.digital-clock-separator--off]="
+            (timeService.$seconds | async) % 2
+        "
+    ></div>
+    <app-digital-clock-digit
+        [digit]="$secondsTensDigit | async"
+    ></app-digital-clock-digit>
+    <app-digital-clock-digit
+        [digit]="$secondsOnesDigit | async"
+    ></app-digital-clock-digit>
 </div>
+<ol class="digital-clock-weekdays">
+    <li
+        class="digital-clock-weekday"
+        [class.digital-clock-weekday--on]="
+            day === (timeService.$weekdays | async)
+        "
+        *ngFor="let day of dayNamesShort"
+    >
+        {{ day }}
+    </li>
+</ol>
+<label for="color">set color</label
+><input id="color" type="color" (input)="colorInput($event)" />

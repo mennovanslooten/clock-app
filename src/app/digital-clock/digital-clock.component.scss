@@ -1,47 +1,96 @@
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 :host {
-  margin: auto;
+    margin: auto;
+    --color-h: 157; /* Hue        */
+    --color-s: 73%; /* Saturation */
+    --color-l: 57%; /* Lightness  */
+    text-align: right;
 }
 
 $grid-size: 8px;
-$color: #F90;
+$color: #f90;
 .digital-clock {
-  font-size: 8px;
-  display: flex;
-  justify-content: center;
+    font-size: 8px;
+    display: flex;
+    justify-content: center;
 }
 
 .digital-clock-separator {
-  width: $grid-size * 5;
-  height: $grid-size * 15;
-  position: relative;
-  transform: skewX(-6deg);
-  transition: opacity 0.2s linear;
+    width: $grid-size * 5;
+    height: $grid-size * 15;
+    position: relative;
+    transform: skewX(-6deg);
+    transition: filter 0.1s linear;
 }
 
 .digital-clock-separator--off {
-  opacity: 0.1;
+    // opacity: 0.1;
+    filter: brightness(15%);
 }
 
 .digital-clock-separator::before,
 .digital-clock-separator::after {
-  width: $grid-size * 1;
-  height: $grid-size * 1;
-  position: absolute;
-  background: darken($color, 10%);
-  content: "";
-  border-radius: $grid-size * .5;
-  left: $grid-size * 2;
-  box-shadow: inset 0 0 2px 1px $color, 0 0 $grid-size * 1 .5em rgba($color, 0.5);
+    width: $grid-size * 1;
+    height: $grid-size * 1;
+    position: absolute;
+    // background: darken($color, 10%);
+    background: hsl(var(--color-h), var(--color-s), var(--color-l));
+    filter: brightness(100%);
+    content: "";
+    border-radius: $grid-size * 0.5;
+    left: $grid-size * 2;
+    // box-shadow: inset 0 0 2px 1px $color, 0 0 $grid-size * 1 .5em rgba($color, 0.5);
+    box-shadow: inset 0 0 2px 1px
+            hsl(var(--color-h), var(--color-s), var(--color-l)),
+        0 0 $grid-size * 1 0.5em
+            hsla(var(--color-h), var(--color-s), var(--color-l), 0.5);
 }
 
 .digital-clock-separator::before {
-  top: $grid-size * 4;
+    top: $grid-size * 4;
 }
 
 .digital-clock-separator::after {
-  top: $grid-size * 10;
+    top: $grid-size * 10;
+}
+
+.digital-clock-weekdays {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    margin: 0;
+    padding: 0.5rem 0 0;
+}
+
+.digital-clock-weekday {
+    margin: 0;
+    padding: 0;
+    filter: brightness(15%);
+    color: hsl(var(--color-h), var(--color-s), var(--color-l));
+}
+
+.digital-clock-weekday--on {
+    filter: brightness(100%);
+    text-shadow: 0 0 8px hsl(var(--color-h), var(--color-s), var(--color-l));
+}
+
+#color {
+    visibility: hidden;
+}
+
+label {
+    float: right;
+    color: hsl(var(--color-h), var(--color-s), var(--color-l));
+    filter: brightness(15%);
+    transition: filter 0.1s linear;
+    cursor: pointer;
+    // font-style: italic;
+
+    &:hover {
+        filter: brightness(80%);
+        text-shadow: 0 0 8px hsl(var(--color-h), var(--color-s), var(--color-l));
+    }
 }

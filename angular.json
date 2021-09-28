@@ -48,7 +48,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "clock-app:build"
+            "browserTarget": "clock-app:build",
+            "port": 4222
           },
           "configurations": {
             "production": {

@@ -1,178 +1,179 @@
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 :host {
-  margin: auto;
+    margin: auto;
 }
 
-$clock-size: 400px;
+$clock-size: 20rem;
 $size: $clock-size / 20;
-$primary-color: #FFF;
+$primary-color: #fff;
 $secondary-color: scale-color($primary-color, $lightness: -50%);
 $tertiary-color: scale-color($primary-color, $lightness: -90%);
 .analog-clock {
-  font-family: Helvetica, Arial, sans-serif;
-  width: $clock-size;
-  height: $clock-size;
-  position: relative;
+    font-family: Helvetica, Arial, sans-serif;
+    width: $clock-size;
+    height: $clock-size;
+    position: relative;
 }
 
 .clock-face {
-  width: $clock-size;
-  height: $clock-size;
-  border-radius: 50%;
-  border: $clock-size / 100 solid $primary-color;
-  background: $tertiary-color;
+    width: $clock-size;
+    height: $clock-size;
+    border-radius: 50%;
+    border: $clock-size / 100 solid $primary-color;
+    background: $tertiary-color;
 }
 
 @mixin clock-hand($height, $color) {
-  $width: $clock-size / 100;
-  $hand-length: $height * $clock-size;
-  $hand-extend: $clock-size / 20;
-  width: $width;
-  height: $hand-length;
-  background: $color;
-  position: absolute;
-  left: ($clock-size / 2) - ($width / 2);
-  bottom: ($clock-size / 2) - $hand-extend;
-  transform-origin: center ($hand-length - $hand-extend);
-  box-shadow: 0 0 $clock-size * .01 black;
+    $width: $clock-size / 100;
+    $hand-length: $height * $clock-size;
+    $hand-extend: $clock-size / 20;
+    width: $width;
+    height: $hand-length;
+    background: $color;
+    position: absolute;
+    left: ($clock-size / 2) - ($width / 2);
+    bottom: ($clock-size / 2) - $hand-extend;
+    transform-origin: center ($hand-length - $hand-extend);
+    box-shadow: 0 0 $clock-size * 0.01 black;
 }
 
 [class^="clock-hand-hours"] {
-  @include clock-hand($height: .35, $color: $primary-color);
-  z-index: 1;
+    @include clock-hand($height: 0.35, $color: $primary-color);
+    z-index: 1;
 }
 
 [class^="clock-hand-minutes"] {
-  @include clock-hand($height: .45, $color: $primary-color);
-  z-index: 2;
+    @include clock-hand($height: 0.45, $color: $primary-color);
+    z-index: 2;
 }
 
 [class^="clock-hand-seconds"] {
-  @include clock-hand($height: .45, $color: $secondary-color);
-  z-index: 3;
+    @include clock-hand($height: 0.45, $color: $secondary-color);
+    z-index: 3;
 }
 
 [class^="clock-face-graduation"] {
-  position: absolute;
-  $graduation-size: $clock-size / 100;
-  $graduation-offset: $clock-size / 50;
-  left: $clock-size / 2 - $graduation-size / 2;
-  top: $graduation-offset;
-  background: $secondary-color;
-  width: $graduation-size;
-  transform-origin: center ($clock-size / 2 - $graduation-offset);
+    position: absolute;
+    $graduation-size: $clock-size / 100;
+    $graduation-offset: $clock-size / 50;
+    left: $clock-size / 2 - $graduation-size / 2;
+    top: $graduation-offset;
+    background: $secondary-color;
+    width: $graduation-size;
+    transform-origin: center ($clock-size / 2 - $graduation-offset);
 }
 
 [class^="clock-face-number"] {
-  // background: orange;
-  $number-size: $clock-size / 10;
-  $number-offset: $clock-size / 15;
-  font-size: $number-size;
-  position: absolute;
-  width: $number-size;
-  line-height: $number-size;
-  top: $number-offset;
-  left: $clock-size / 2 - $number-size / 2;
-  height: $clock-size / 2 - $number-offset;
-  color: $secondary-color;
-  transform-origin: center bottom;
-  text-align: center;
-  /*background: yellow;*/
-  span {
+    // background: orange;
+    $number-size: $clock-size / 10;
+    $number-offset: $clock-size / 15;
+    font-size: $number-size;
     position: absolute;
     width: $number-size;
-    height: $number-size; // background: purple;
-    transform-origin: center center;
-    left: 0;
-    top: 0;
-  }
+    line-height: $number-size;
+    top: $number-offset;
+    left: $clock-size / 2 - $number-size / 2;
+    height: $clock-size / 2 - $number-offset;
+    color: $secondary-color;
+    transform-origin: center bottom;
+    text-align: center;
+    /*background: yellow;*/
+    span {
+        position: absolute;
+        width: $number-size;
+        height: $number-size; // background: purple;
+        transform-origin: center center;
+        left: 0;
+        top: 0;
+    }
 }
 
 .graduation-large {
-  height: $clock-size / 40;
+    height: $clock-size / 40;
 }
 
 .graduation-medium {
-  height: $clock-size / 20;
+    height: $clock-size / 20;
 }
 
 .graduation-small {
-  height: $clock-size / 100;
+    height: $clock-size / 100;
 }
 
 .clock-date {
-  $date-font-size: $clock-size / 20;
-  $date-height: $date-font-size * 1.5; // $date-size: $clock-size / 20;
-  $date-border-size: $clock-size / 200;
-  position: absolute;
-  top: $clock-size / 2 - $date-height / 2;
-  right: $clock-size / 10;
-  border: $date-border-size solid $secondary-color;
-  border-radius: $clock-size / 200;
-  color: $primary-color;
-  display: flex;
-  line-height: $date-height - 2 * $date-border-size;
-  z-index: 0;
-  div {
-    text-align: center;
-  }
-  .clock-date-weekday {
-    width: 2.5 * $date-font-size;
-    text-transform: uppercase;
-  }
-  .clock-date-day {
-    width: 1.5 * $date-font-size;
-    border-left: $date-border-size solid $secondary-color;
-  }
-  .clock-date-month {
-    border-left: $date-border-size solid $secondary-color;
-    width: 2.5 * $date-font-size;
-    text-transform: uppercase;
-  }
+    $date-font-size: $clock-size / 20;
+    font-size: $date-font-size;
+    $date-height: $date-font-size * 1.75; // $date-size: $clock-size / 20;
+    $date-border-size: $clock-size / 200;
+    position: absolute;
+    top: $clock-size / 2 - $date-height / 2;
+    right: $clock-size / 10;
+    border: $date-border-size solid $secondary-color;
+    border-radius: $clock-size / 200;
+    color: $primary-color;
+    display: flex;
+    line-height: $date-height - 2 * $date-border-size;
+    z-index: 0;
+    div {
+        text-align: center;
+    }
+    .clock-date-weekday {
+        width: 3 * $date-font-size;
+        text-transform: uppercase;
+    }
+    .clock-date-day {
+        width: 2 * $date-font-size;
+        border-left: $date-border-size solid $secondary-color;
+    }
+    .clock-date-month {
+        border-left: $date-border-size solid $secondary-color;
+        width: 2.5 * $date-font-size;
+        text-transform: uppercase;
+    }
 }
 
 .clock-face-number--3 {
-  transform: rotate(90deg);
-  display: none;
+    transform: rotate(90deg);
+    display: none;
 }
 
 .clock-face-number--3 span {
-  transform: rotate(-90deg);
+    transform: rotate(-90deg);
 }
 
 .clock-face-number--6 {
-  transform: rotate(180deg);
+    transform: rotate(180deg);
 }
 
 .clock-face-number--6 span {
-  transform: rotate(-180deg);
+    transform: rotate(-180deg);
 }
 
 .clock-face-number--9 {
-  transform: rotate(270deg);
+    transform: rotate(270deg);
 }
 
 .clock-face-number--9 span {
-  transform: rotate(-270deg);
+    transform: rotate(-270deg);
 }
 
 @for $i from 0 to 60 {
-  .clock-face-graduation--#{$i},
-  .clock-hand-seconds--#{$i},
-  .clock-hand-minutes--#{$i} {
-    transform: rotate($i * 6deg);
-  }
+    .clock-face-graduation--#{$i},
+    .clock-hand-seconds--#{$i},
+    .clock-hand-minutes--#{$i} {
+        transform: rotate($i * 6deg);
+    }
 }
 
 @for $i from 0 to 24 {
-  @for $j from 0 to 60 {
-    $degrees: ($i % 12) * 30;
-    $degrees: $degrees + $j / 2;
-    .clock-hand-hours--#{$i}--#{$j} {
-      transform: rotate(#{$degrees}deg);
+    @for $j from 0 to 60 {
+        $degrees: ($i % 12) * 30;
+        $degrees: $degrees + $j / 2;
+        .clock-hand-hours--#{$i}--#{$j} {
+            transform: rotate(#{$degrees}deg);
+        }
     }
-  }
 }
