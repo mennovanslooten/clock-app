@@ -50,5 +50,9 @@
         "tslint": "~5.20.0",
         "typescript": "^3.5.3"
     },
-    "prettier": {}
+    "prettier": {
+        "trailingComma": "es5",
+        "tabWidth": 4,
+        "singleQuote": true
+    }
 }

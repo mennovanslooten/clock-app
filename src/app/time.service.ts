@@ -41,11 +41,9 @@ export class TimeService {
         );
 
     $centiseconds: Observable<number> = this.$time.pipe(
-        map(
-            (date: Date): number => {
-                return Math.floor(date.getMilliseconds() / 10);
-            }
-        )
+        map((date: Date): number => {
+            return Math.floor(date.getMilliseconds() / 10);
+        })
     );
 
     $seconds: Observable<number> = this.$time.pipe(
@@ -79,30 +77,28 @@ export class TimeService {
     );
 
     $weekdays: Observable<string> = this.$time.pipe(
-        map(
-            (date: Date): string => {
-                const dayNamesShort = [
-                    'Sun',
-                    'Mon',
-                    'Tue',
-                    'Wed',
-                    'Thu',
-                    'Fri',
-                    'Sat',
-                ];
-                const dayNamesLong = [
-                    'Sunday',
-                    'Monday',
-                    'Tuesday',
-                    'Wednesday',
-                    'Thursday',
-                    'Friday',
-                    'Saturday',
-                ];
-                const dayIndex = date.getDay();
-                return dayNamesShort[dayIndex];
-            }
-        ),
+        map((date: Date): string => {
+            const dayNamesShort = [
+                'Sun',
+                'Mon',
+                'Tue',
+                'Wed',
+                'Thu',
+                'Fri',
+                'Sat',
+            ];
+            const dayNamesLong = [
+                'Sunday',
+                'Monday',
+                'Tuesday',
+                'Wednesday',
+                'Thursday',
+                'Friday',
+                'Saturday',
+            ];
+            const dayIndex = date.getDay();
+            return dayNamesShort[dayIndex];
+        }),
         distinctUntilChanged()
     );
 

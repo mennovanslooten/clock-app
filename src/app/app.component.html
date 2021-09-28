@@ -1,10 +1,12 @@
 <nav class="app-navigation">
-  <a routerLinkActive="app-navigation--active" routerLink="/analog">Analog</a>
-  <a routerLinkActive="app-navigation--active" routerLink="/digital">Digital</a>
-  <a routerLinkActive="app-navigation--active" routerLink="/text">Text</a>
+    <a routerLinkActive="app-navigation--active" routerLink="/analog">Analog</a>
+    <a routerLinkActive="app-navigation--active" routerLink="/digital"
+        >Digital</a
+    >
+    <a routerLinkActive="app-navigation--active" routerLink="/text">Text</a>
 
-  <a class="app-fullscreen" (click)="fullScreen()">Toggle fullscreen</a>
+    <a class="app-fullscreen" (click)="fullScreen()">Toggle fullscreen</a>
 </nav>
 <div class="app-body">
-  <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
 </div>

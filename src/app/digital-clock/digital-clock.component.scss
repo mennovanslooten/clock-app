@@ -39,7 +39,7 @@ $color: #f90;
     // background: darken($color, 10%);
     background: hsl(var(--color-h), var(--color-s), var(--color-l));
     filter: brightness(100%);
-    content: "";
+    content: '';
     border-radius: $grid-size * 0.5;
     left: $grid-size * 2;
     // box-shadow: inset 0 0 2px 1px $color, 0 0 $grid-size * 1 .5em rgba($color, 0.5);

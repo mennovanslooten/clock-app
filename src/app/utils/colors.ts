@@ -20,7 +20,7 @@ export function rgbToHsl({ r, g, b }: RgbColor): HslColor {
     const max = Math.max(r, g, b);
     const min = Math.min(r, g, b);
     const d = max - min;
-    let h;
+    let h: number;
 
     if (d === 0) {
         h = 0;
@@ -37,8 +37,8 @@ export function rgbToHsl({ r, g, b }: RgbColor): HslColor {
 
     return {
         h: h * 60,
-        s: Math.floor(100 * s) + "%",
-        l: Math.floor(100 * l) + "%"
+        s: Math.floor(100 * s) + '%',
+        l: Math.floor(100 * l) + '%',
     };
 }
 

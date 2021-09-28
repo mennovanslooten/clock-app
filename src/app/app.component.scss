@@ -1,37 +1,37 @@
 $nav-height: 40px;
 :host {
-  height: 100vh;
-  width: 100vw;
-  display: grid;
-  grid-template-rows: $nav-height auto;
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-rows: $nav-height auto;
 }
 
 .app-navigation {
-  line-height: $nav-height;
-  opacity: 0.25;
-  transition: opacity 0.3s linear;
-  display: flex;
-  &:hover {
-    opacity: 1;
-  }
-  a {
-    padding: 0 20px;
-    cursor: pointer;
-    color: #09C;
-    text-decoration: none;
+    line-height: $nav-height;
+    opacity: 0.25;
+    transition: opacity 0.3s linear;
+    display: flex;
     &:hover {
-      color: #0CF;
+        opacity: 1;
     }
-    &.app-navigation--active {
-      color: #0FF;
+    a {
+        padding: 0 20px;
+        cursor: pointer;
+        color: #09c;
+        text-decoration: none;
+        &:hover {
+            color: #0cf;
+        }
+        &.app-navigation--active {
+            color: #0ff;
+        }
     }
-  }
 }
 
 .app-fullscreen {
-  margin-left: auto;
+    margin-left: auto;
 }
 
 .app-body {
-  display: flex;
+    display: flex;
 }

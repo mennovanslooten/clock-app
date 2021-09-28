@@ -40,22 +40,22 @@ $tertiary-color: scale-color($primary-color, $lightness: -90%);
     box-shadow: 0 0 $clock-size * 0.01 black;
 }
 
-[class^="clock-hand-hours"] {
+[class^='clock-hand-hours'] {
     @include clock-hand($height: 0.35, $color: $primary-color);
     z-index: 1;
 }
 
-[class^="clock-hand-minutes"] {
+[class^='clock-hand-minutes'] {
     @include clock-hand($height: 0.45, $color: $primary-color);
     z-index: 2;
 }
 
-[class^="clock-hand-seconds"] {
+[class^='clock-hand-seconds'] {
     @include clock-hand($height: 0.45, $color: $secondary-color);
     z-index: 3;
 }
 
-[class^="clock-face-graduation"] {
+[class^='clock-face-graduation'] {
     position: absolute;
     $graduation-size: $clock-size / 100;
     $graduation-offset: $clock-size / 50;
@@ -66,7 +66,7 @@ $tertiary-color: scale-color($primary-color, $lightness: -90%);
     transform-origin: center ($clock-size / 2 - $graduation-offset);
 }
 
-[class^="clock-face-number"] {
+[class^='clock-face-number'] {
     // background: orange;
     $number-size: $clock-size / 10;
     $number-offset: $clock-size / 15;

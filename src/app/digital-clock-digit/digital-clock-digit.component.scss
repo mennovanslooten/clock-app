@@ -1,75 +1,71 @@
-$color: #F90;
+$color: #f90;
 $grid-size: 8px;
-[class^="digital-clock-digit"] {
-  width: $grid-size * 9;
-  height: $grid-size * 15;
-  position: relative;
-  transform: skewX(-6deg);
-  display: inline-block;
+[class^='digital-clock-digit'] {
+    width: $grid-size * 9;
+    height: $grid-size * 15;
+    position: relative;
+    transform: skewX(-6deg);
+    display: inline-block;
 }
 
-[class^="digital-clock-bar"] {
-  // background-color: darken($color, 10%); // background-image: linear-gradient(transparent 50%, rgba(255, 255, 255, .25) 50%);
-  background-color: hsl(
-    var(--color-h),
-    var(--color-s),
-    var(--color-l)
-  );
-  // background-size: $grid-size $grid-size;
-  filter: brightness(15%);
-  position: absolute;
-  border-radius: $grid-size * .5;
-  transition: filter 0.1s linear;
+[class^='digital-clock-bar'] {
+    // background-color: darken($color, 10%); // background-image: linear-gradient(transparent 50%, rgba(255, 255, 255, .25) 50%);
+    background-color: hsl(var(--color-h), var(--color-s), var(--color-l));
+    // background-size: $grid-size $grid-size;
+    filter: brightness(15%);
+    position: absolute;
+    border-radius: $grid-size * 0.5;
+    transition: filter 0.1s linear;
 }
 
 .digital-clock-bar--0,
 .digital-clock-bar--3,
 .digital-clock-bar--6 {
-  width: $grid-size * 5;
-  height: $grid-size * 1;
+    width: $grid-size * 5;
+    height: $grid-size * 1;
 }
 
 .digital-clock-bar--1,
 .digital-clock-bar--2,
 .digital-clock-bar--4,
 .digital-clock-bar--5 {
-  width: $grid-size * 1;
-  height: $grid-size * 5;
+    width: $grid-size * 1;
+    height: $grid-size * 5;
 }
 
 .digital-clock-bar--0 {
-  top: $grid-size * 1;
-  left: $grid-size * 2;
+    top: $grid-size * 1;
+    left: $grid-size * 2;
 }
 
 .digital-clock-bar--1 {
-  top: $grid-size * 2;
-  left: $grid-size * 1;
+    top: $grid-size * 2;
+    left: $grid-size * 1;
 }
 
 .digital-clock-bar--2 {
-  top: $grid-size * 2;
-  left: $grid-size * 7;
+    top: $grid-size * 2;
+    left: $grid-size * 7;
 }
 
 .digital-clock-bar--3 {
-  top: $grid-size * 7;
-  left: $grid-size * 2;
+    top: $grid-size * 7;
+    left: $grid-size * 2;
 }
 
 .digital-clock-bar--4 {
-  top: $grid-size * 8;
-  left: $grid-size * 1;
+    top: $grid-size * 8;
+    left: $grid-size * 1;
 }
 
 .digital-clock-bar--5 {
-  top: $grid-size * 8;
-  left: $grid-size * 7;
+    top: $grid-size * 8;
+    left: $grid-size * 7;
 }
 
 .digital-clock-bar--6 {
-  top: $grid-size * 13;
-  left: $grid-size * 2;
+    top: $grid-size * 13;
+    left: $grid-size * 2;
 }
 
 .digital-clock-digit--0 .digital-clock-bar--0,
@@ -121,7 +117,11 @@ $grid-size: 8px;
 .digital-clock-digit--9 .digital-clock-bar--3,
 .digital-clock-digit--9 .digital-clock-bar--5,
 .digital-clock-digit--9 .digital-clock-bar--6 {
-  filter: brightness(100%);
-  box-shadow: inset 0 0 ($grid-size / 4) ($grid-size / 8) $color, 0 0 $grid-size .5em rgba($color, 0.5);
-  box-shadow: inset 0 0 ($grid-size / 4) ($grid-size / 8) hsl(var(--color-h), var(--color-s), var(--color-l)), 0 0 $grid-size .5em hsla(var(--color-h), var(--color-s), var(--color-l), 0.5);
+    filter: brightness(100%);
+    box-shadow: inset 0 0 ($grid-size / 4) ($grid-size / 8) $color,
+        0 0 $grid-size 0.5em rgba($color, 0.5);
+    box-shadow: inset 0 0 ($grid-size / 4) ($grid-size / 8)
+            hsl(var(--color-h), var(--color-s), var(--color-l)),
+        0 0 $grid-size 0.5em
+            hsla(var(--color-h), var(--color-s), var(--color-l), 0.5);
 }

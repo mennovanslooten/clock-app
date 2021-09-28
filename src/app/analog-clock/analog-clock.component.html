@@ -1,32 +1,72 @@
 <div class="analog-clock">
-  <div class="clock-face">
-    <!-- Numbers -->
-    <div *ngFor="let num of [12,3,6,9]; let i = index;" class="clock-face-number--{{num}}">
-      <span>{{num}}</span>
+    <div class="clock-face">
+        <!-- Numbers -->
+        <div
+            *ngFor="let num of [12, 3, 6, 9]; let i = index"
+            class="clock-face-number--{{ num }}"
+        >
+            <span>{{ num }}</span>
+        </div>
+
+        <!-- 4th graduations -->
+        <div
+            *ngFor="let num of [0, 15, 30, 45]"
+            class="clock-face-graduation--{{ num }} graduation-large"
+        ></div>
+
+        <!-- 12th graduations -->
+        <div
+            *ngFor="let num of [5, 10, 20, 25, 35, 40, 50, 55]"
+            class="clock-face-graduation--{{ num }} graduation-medium"
+        ></div>
+
+        <!-- 60th graduations -->
+        <div
+            *ngFor="let num of [1, 2, 3, 4, 6, 7, 8, 9]"
+            class="clock-face-graduation--{{ num }} graduation-small"
+        ></div>
+        <div
+            *ngFor="let num of [11, 12, 13, 14, 16, 17, 18, 19]"
+            class="clock-face-graduation--{{ num }} graduation-small"
+        ></div>
+        <div
+            *ngFor="let num of [21, 22, 23, 24, 26, 27, 28, 29]"
+            class="clock-face-graduation--{{ num }} graduation-small"
+        ></div>
+        <div
+            *ngFor="let num of [31, 32, 33, 34, 36, 37, 38, 39]"
+            class="clock-face-graduation--{{ num }} graduation-small"
+        ></div>
+        <div
+            *ngFor="let num of [41, 42, 43, 44, 46, 47, 48, 49]"
+            class="clock-face-graduation--{{ num }} graduation-small"
+        ></div>
+        <div
+            *ngFor="let num of [51, 52, 53, 54, 56, 57, 58, 59]"
+            class="clock-face-graduation--{{ num }} graduation-small"
+        ></div>
     </div>
 
-    <!-- 4th graduations -->
-    <div *ngFor="let num of [0,15,30,45]" class="clock-face-graduation--{{num}} graduation-large"></div>
+    <div
+        class="clock-hand-hours clock-hand-hours--{{
+            timeService.$hours | async
+        }}--{{ timeService.$minutes | async }}"
+    ></div>
+    <div
+        class="clock-hand-minutes clock-hand-minutes--{{
+            timeService.$minutes | async
+        }}"
+    ></div>
+    <div
+        class="clock-hand-seconds clock-hand-seconds--{{
+            timeService.$seconds | async
+        }}"
+    ></div>
 
-    <!-- 12th graduations -->
-    <div *ngFor="let num of [5,10,20,25,35,40,50,55]" class="clock-face-graduation--{{num}} graduation-medium"></div>
-
-    <!-- 60th graduations -->
-    <div *ngFor="let num of [1,2,3,4, 6,7,8,9]" class="clock-face-graduation--{{num}} graduation-small"></div>
-    <div *ngFor="let num of [11,12,13,14, 16,17,18,19]" class="clock-face-graduation--{{num}} graduation-small"></div>
-    <div *ngFor="let num of [21,22,23,24, 26,27,28,29]" class="clock-face-graduation--{{num}} graduation-small"></div>
-    <div *ngFor="let num of [31,32,33,34, 36,37,38,39]" class="clock-face-graduation--{{num}} graduation-small"></div>
-    <div *ngFor="let num of [41,42,43,44, 46,47,48,49]" class="clock-face-graduation--{{num}} graduation-small"></div>
-    <div *ngFor="let num of [51,52,53,54, 56,57,58,59]" class="clock-face-graduation--{{num}} graduation-small"></div>
-  </div>
-
-  <div class="clock-hand-hours clock-hand-hours--{{timeService.$hours | async}}--{{timeService.$minutes | async}}"></div>
-  <div class="clock-hand-minutes clock-hand-minutes--{{timeService.$minutes | async}}"></div>
-  <div class="clock-hand-seconds clock-hand-seconds--{{timeService.$seconds | async}}"></div>
-
-  <div class="clock-date">
-    <div class="clock-date-weekday">{{timeService.$weekdays | async}}</div>
-    <div class="clock-date-day">{{timeService.$days | async}}</div>
-  </div>
-
+    <div class="clock-date">
+        <div class="clock-date-weekday">
+            {{ timeService.$weekdays | async }}
+        </div>
+        <div class="clock-date-day">{{ timeService.$days | async }}</div>
+    </div>
 </div>

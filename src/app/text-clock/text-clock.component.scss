@@ -1,13 +1,13 @@
 :host {
-  margin: auto;
+    margin: auto;
 }
 
 .text-clock {
-  font-size: 2rem;
-  padding: 1rem;
-  span {
-    border: 1px solid yellow;
-    color: yellow;
+    font-size: 2rem;
     padding: 1rem;
-  }
+    span {
+        border: 1px solid yellow;
+        color: yellow;
+        padding: 1rem;
+    }
 }
