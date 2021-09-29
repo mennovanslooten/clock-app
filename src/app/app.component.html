@@ -5,6 +5,8 @@
     >
     <a routerLinkActive="app-navigation--active" routerLink="/text">Text</a>
 
+    <label class="app-setcolor" for="color">Set color</label>
+    <input id="color" type="color" (input)="colorInput($event)" />
     <a class="app-fullscreen" (click)="fullScreen()">Toggle fullscreen</a>
 </nav>
 <div class="app-body">

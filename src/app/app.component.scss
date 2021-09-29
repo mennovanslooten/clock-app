@@ -4,6 +4,9 @@ $nav-height: 40px;
     width: 100vw;
     display: grid;
     grid-template-rows: $nav-height auto;
+    --color-h: 157; /* Hue        */
+    --color-s: 73%; /* Saturation */
+    --color-l: 57%; /* Lightness  */
 }
 
 .app-navigation {
@@ -11,25 +14,34 @@ $nav-height: 40px;
     opacity: 0.25;
     transition: opacity 0.3s linear;
     display: flex;
+
     &:hover {
         opacity: 1;
     }
-    a {
+
+    a,
+    label {
         padding: 0 20px;
         cursor: pointer;
         color: #09c;
         text-decoration: none;
+
         &:hover {
             color: #0cf;
         }
+
         &.app-navigation--active {
             color: #0ff;
         }
     }
 }
 
-.app-fullscreen {
+.app-setcolor {
     margin-left: auto;
+}
+
+#color {
+    display: none;
 }
 
 .app-body {
