@@ -4,9 +4,11 @@ $nav-height: 40px;
     width: 100vw;
     display: grid;
     grid-template-rows: $nav-height auto;
-    --color-h: 157; /* Hue        */
-    --color-s: 73%; /* Saturation */
-    --color-l: 57%; /* Lightness  */
+
+    // These variables are set in app.component.ts
+    --color-h: 0; /* Hue        */
+    --color-s: 0; /* Saturation */
+    --color-l: 0; /* Lightness  */
 }
 
 .app-navigation {

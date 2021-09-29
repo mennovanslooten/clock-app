@@ -1,6 +1,6 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { TimeService } from './time.service';
-import { RgbColor, HslColor, rgbToHsl } from './utils/colors';
+import { HslColor, HexColor, hexToHsl } from './utils/colors';
 import { toggleFullscreen } from './utils/fullscreen';
 
 @Component({
@@ -9,29 +9,44 @@ import { toggleFullscreen } from './utils/fullscreen';
     styleUrls: ['./app.component.scss'],
     providers: [TimeService],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
     rootElement: HTMLElement;
+    hexColor: HexColor = '#FFCC99';
+
     constructor(public element: ElementRef) {
         this.rootElement = element.nativeElement;
     }
 
-    fullScreen() {
+    ngOnInit() {
+        this.restoreColor();
+    }
+
+    toggleFullScreen() {
         toggleFullscreen(this.rootElement);
     }
 
     colorInput($event: Event) {
-        const color = ($event.target as HTMLInputElement).value;
-        const r = parseInt(color.substr(1, 2), 16);
-        const g = parseInt(color.substr(3, 2), 16);
-        const b = parseInt(color.substr(5, 2), 16);
-        console.log({ r, g, b });
-        this.setColor({ r, g, b });
+        const hexColor = ($event.target as HTMLInputElement).value;
+        this.setColor(hexColor);
+        this.storeColor(hexColor);
     }
 
-    setColor(rgbColor: RgbColor) {
-        const { h, s, l }: HslColor = rgbToHsl(rgbColor);
+    setColor(hexColor: HexColor) {
+        this.hexColor = hexColor;
+        const { h, s, l }: HslColor = hexToHsl(hexColor);
         this.rootElement.style.setProperty('--color-h', h.toString());
         this.rootElement.style.setProperty('--color-s', s);
         this.rootElement.style.setProperty('--color-l', l);
+    }
+
+    storeColor(hexColor: HexColor) {
+        window.localStorage.setItem('angular-clock-color', hexColor);
+    }
+
+    restoreColor() {
+        const storedHexColor =
+            window.localStorage.getItem('angular-clock-color') || this.hexColor;
+
+        this.setColor(storedHexColor);
     }
 }

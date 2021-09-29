@@ -2,12 +2,20 @@
     margin: auto;
 }
 
+$primary-color: hsl(var(--color-h), var(--color-s), var(--color-l));
+$glow-color: hsl(var(--color-h), var(--color-s), calc(var(--color-l) / 2));
+$tertiary-color: hsl(var(--color-h), var(--color-s), calc(var(--color-l) / 8));
 .text-clock {
     font-size: 2rem;
     padding: 1rem;
+    border: 1px solid $primary-color;
+    box-shadow: 0 0 0.5rem $glow-color inset, 0 0 0.5rem $glow-color;
+    border-radius: 1rem;
+    background-color: $tertiary-color;
+
     span {
-        border: 1px solid yellow;
-        color: yellow;
+        color: $primary-color;
+        text-shadow: 0 0 0.5rem $glow-color;
         padding: 1rem;
     }
 }

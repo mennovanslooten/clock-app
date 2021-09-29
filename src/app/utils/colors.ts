@@ -11,6 +11,15 @@ export type HslColor = {
     l: string; // "[0...100]%"
 };
 
+export type HexColor = string;
+
+export function hexToHsl(hexColor: HexColor): HslColor {
+    const r = parseInt(hexColor.substr(1, 2), 16);
+    const g = parseInt(hexColor.substr(3, 2), 16);
+    const b = parseInt(hexColor.substr(5, 2), 16);
+    return rgbToHsl({ r, g, b });
+}
+
 export function rgbToHsl({ r, g, b }: RgbColor): HslColor {
     // Normalize to [0-1]
     r = r / 255;
