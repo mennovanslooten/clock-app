@@ -9,11 +9,68 @@ $nav-height: 40px;
     --color-h: 0; /* Hue        */
     --color-s: 0; /* Saturation */
     --color-l: 0; /* Lightness  */
+
+    --color-primary: hsl(var(--color-h), var(--color-s), var(--color-l));
+    --color-primary-dark: hsl(
+        var(--color-h),
+        var(--color-s),
+        calc(var(--color-l) / 2)
+    );
+
+    --color-primary-darker: hsl(
+        var(--color-h),
+        var(--color-s),
+        calc(var(--color-l) / 8)
+    );
+
+    --color-primary-darkest: hsl(
+        var(--color-h),
+        var(--color-s),
+        calc(var(--color-l) / 16)
+    );
+
+    --color-primary-muted: hsl(
+        var(--color-h),
+        calc(var(--color-s) / 2),
+        calc(var(--color-l) / 2)
+    );
+
+    --color-primary-extra-muted: hsl(
+        var(--color-h),
+        calc(var(--color-s) / 1),
+        calc(var(--color-l) / 8)
+    );
+
+    --color-primary-transparent: hsla(
+        var(--color-h),
+        var(--color-s),
+        var(--color-l),
+        0.5
+    );
+
+    --color-inverted: hsl(
+        calc(var(--color-h) + 180),
+        var(--color-s),
+        var(--color-l)
+    );
+
+    --color-inverted-dark: hsl(
+        calc(var(--color-h) + 180),
+        var(--color-s),
+        calc(var(--color-l) / 2)
+    );
+
+    --color-inverted-transparent: hsla(
+        calc(var(--color-h) + 180),
+        var(--color-s),
+        var(--color-l),
+        0.5
+    );
 }
 
 .app-navigation {
     line-height: $nav-height;
-    opacity: 0.25;
+    opacity: 0.5;
     transition: opacity 0.3s linear;
     display: flex;
 
@@ -25,15 +82,15 @@ $nav-height: 40px;
     label {
         padding: 0 20px;
         cursor: pointer;
-        color: #09c;
+        color: var(--color-primary-dark);
         text-decoration: none;
 
         &:hover {
-            color: #0cf;
+            color: var(--color-primary);
         }
 
         &.app-navigation--active {
-            color: #0ff;
+            color: var(--color-inverted);
         }
     }
 }

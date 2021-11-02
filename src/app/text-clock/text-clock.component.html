@@ -1,6 +1,6 @@
 <div class="text-clock">
-    <span
-        >It is
-        <strong>{{ $timeString | async }}</strong>
-    </span>
+    <span>It is</span>
+    <span *ngFor="let timeStringPart of $timeStringParts | async">{{
+        timeStringPart
+    }}</span>
 </div>

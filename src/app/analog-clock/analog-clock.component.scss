@@ -8,22 +8,6 @@
 
 $clock-size: 20rem;
 $size: $clock-size / 20;
-$primary-color: hsl(var(--color-h), var(--color-s), var(--color-l));
-$secondary-color: hsl(
-    var(--color-h),
-    calc(var(--color-s) / 2),
-    calc(var(--color-l) / 2)
-);
-$tertiary-color: hsl(
-    var(--color-h),
-    calc(var(--color-s) / 4),
-    calc(var(--color-l) / 8)
-);
-$inverted-color: hsl(
-    calc(var(--color-h) + 180),
-    var(--color-s),
-    var(--color-l)
-);
 
 .analog-clock {
     width: $clock-size;
@@ -35,37 +19,40 @@ $inverted-color: hsl(
     width: $clock-size;
     height: $clock-size;
     border-radius: 50%;
-    border: $clock-size / 100 solid $primary-color;
-    background: $tertiary-color;
+    border: $clock-size / 100 solid var(--color-primary);
+    background: var(--color-primary-extra-muted);
 }
 
-@mixin clock-hand($height, $color) {
-    $width: $clock-size / 100;
+@mixin clock-hand($height, $width, $color) {
+    $hand-width: $width * $clock-size / 200;
     $hand-length: $height * $clock-size;
     $hand-extend: $clock-size / 20;
-    width: $width;
+    width: $hand-width;
     height: $hand-length;
     background: $color;
     position: absolute;
-    left: ($clock-size / 2) - ($width / 2);
+    left: ($clock-size / 2) - ($hand-width / 2);
     bottom: ($clock-size / 2) - $hand-extend;
     transform-origin: center ($hand-length - $hand-extend);
     box-shadow: 0 0 $clock-size * 0.01 black;
 }
 
 [class^='clock-hand-hours'] {
-    @include clock-hand($height: 0.35, $color: $primary-color);
+    @include clock-hand($height: 0.35, $width: 4, $color: var(--color-primary));
     z-index: 1;
 }
 
 [class^='clock-hand-minutes'] {
-    @include clock-hand($height: 0.45, $color: $primary-color);
+    @include clock-hand($height: 0.45, $width: 2, $color: var(--color-primary));
     z-index: 2;
 }
 
 [class^='clock-hand-seconds'] {
-    // @include clock-hand($height: 0.45, $color: $secondary-color);
-    @include clock-hand($height: 0.45, $color: $inverted-color);
+    @include clock-hand(
+        $height: 0.45,
+        $width: 1,
+        $color: var(--color-inverted)
+    );
     z-index: 3;
 }
 
@@ -75,7 +62,7 @@ $inverted-color: hsl(
     $graduation-offset: $clock-size / 50;
     left: $clock-size / 2 - $graduation-size / 2;
     top: $graduation-offset;
-    background: $secondary-color;
+    background: var(--color-primary-muted);
     width: $graduation-size;
     transform-origin: center ($clock-size / 2 - $graduation-offset);
 }
@@ -91,7 +78,7 @@ $inverted-color: hsl(
     top: $number-offset;
     left: $clock-size / 2 - $number-size / 2;
     height: $clock-size / 2 - $number-offset;
-    color: $secondary-color;
+    color: var(--color-primary-muted);
     transform-origin: center bottom;
     text-align: center;
 
@@ -125,9 +112,9 @@ $inverted-color: hsl(
     position: absolute;
     top: $clock-size / 2 - $date-height / 2;
     right: $clock-size / 10;
-    border: $date-border-size solid $secondary-color;
+    border: $date-border-size solid var(--color-primary-muted);
     border-radius: $clock-size / 200;
-    color: $primary-color;
+    color: var(--color-primary);
     display: flex;
     line-height: $date-height - 2 * $date-border-size;
     z-index: 0;
@@ -144,11 +131,11 @@ $inverted-color: hsl(
 
     .clock-date-day {
         width: 2 * $date-font-size;
-        border-left: $date-border-size solid $secondary-color;
+        border-left: $date-border-size solid var(--color-primary-muted);
     }
 
     .clock-date-month {
-        border-left: $date-border-size solid $secondary-color;
+        border-left: $date-border-size solid var(--color-primary-muted);
         width: 2.5 * $date-font-size;
         text-transform: uppercase;
     }

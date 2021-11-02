@@ -13,8 +13,8 @@ const appRoutes: Routes = [
     { path: 'analog', component: AnalogClockComponent },
     { path: 'digital', component: DigitalClockComponent },
     { path: 'text', component: TextClockComponent },
-    { path: '', redirectTo: '/analog', pathMatch: 'full' },
-    { path: '**', redirectTo: '/analog', pathMatch: 'full' },
+    { path: '', redirectTo: '/digital', pathMatch: 'full' },
+    { path: '**', redirectTo: '/digital', pathMatch: 'full' },
 ];
 
 @NgModule({

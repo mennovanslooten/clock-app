@@ -3,7 +3,7 @@ export default function humanizeTime(hours: number, minutes: number): string {
     const hoursText = getHumanizedHours(hours, minutes);
 
     if (minutesText) {
-        return `${minutesText} ${hoursText}`;
+        return `${minutesText}|${hoursText}`;
     }
 
     return hoursText;
@@ -15,22 +15,22 @@ function getHumanizedMinutes(hours: number, minutes: number) {
     }
 
     if (minutes === 15) {
-        return 'a quarter past';
+        return 'a quarter|past';
     }
 
     if (minutes === 30) {
-        return 'half past';
+        return 'half|past';
     }
 
     if (minutes === 45) {
-        return 'a quarter to';
+        return 'a quarter|to';
     }
 
     if (minutes > 45) {
-        return `${getNumberText(60 - minutes)} to`;
+        return `${getNumberText(60 - minutes)}|to`;
     }
 
-    return `${getNumberText(minutes)} past`;
+    return `${getNumberText(minutes)}|past`;
 }
 
 function getHumanizedHours(hours: number, minutes: number) {
@@ -51,7 +51,7 @@ function getHumanizedHours(hours: number, minutes: number) {
     const hoursText = getNumberText(hours);
 
     if (minutes === 0) {
-        return `${hoursText} o'clock`;
+        return `${hoursText}|o'clock`;
     }
 
     return hoursText;

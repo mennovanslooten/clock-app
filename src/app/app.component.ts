@@ -11,7 +11,7 @@ import { toggleFullscreen } from './utils/fullscreen';
 })
 export class AppComponent implements OnInit {
     rootElement: HTMLElement;
-    hexColor: HexColor = '#FFCC99';
+    hexColor: HexColor = '#FF3300';
 
     constructor(public element: ElementRef) {
         this.rootElement = element.nativeElement;
@@ -27,11 +27,11 @@ export class AppComponent implements OnInit {
 
     colorInput($event: Event) {
         const hexColor = ($event.target as HTMLInputElement).value;
-        this.setColor(hexColor);
+        this.setCssColor(hexColor);
         this.storeColor(hexColor);
     }
 
-    setColor(hexColor: HexColor) {
+    setCssColor(hexColor: HexColor) {
         this.hexColor = hexColor;
         const { h, s, l }: HslColor = hexToHsl(hexColor);
         this.rootElement.style.setProperty('--color-h', h.toString());
@@ -47,6 +47,6 @@ export class AppComponent implements OnInit {
         const storedHexColor =
             window.localStorage.getItem('angular-clock-color') || this.hexColor;
 
-        this.setColor(storedHexColor);
+        this.setCssColor(storedHexColor);
     }
 }

@@ -8,7 +8,7 @@
 }
 
 $grid-size: 8px;
-$color: #f90;
+
 .digital-clock {
     font-size: 8px;
     display: flex;
@@ -33,17 +33,13 @@ $color: #f90;
     width: $grid-size * 1;
     height: $grid-size * 1;
     position: absolute;
-    // background: darken($color, 10%);
-    background: hsl(var(--color-h), var(--color-s), var(--color-l));
+    background: var(--color-primary);
     filter: brightness(100%);
     content: '';
     border-radius: $grid-size * 0.5;
     left: $grid-size * 2;
-    // box-shadow: inset 0 0 2px 1px $color, 0 0 $grid-size * 1 .5em rgba($color, 0.5);
-    box-shadow: inset 0 0 2px 1px
-            hsl(var(--color-h), var(--color-s), var(--color-l)),
-        0 0 $grid-size * 1 0.5em
-            hsla(var(--color-h), var(--color-s), var(--color-l), 0.5);
+    box-shadow: inset 0 0 2px 1px var(--color-primary),
+        0 0 $grid-size * 1 0.5em var(--color-primary-dark);
 }
 
 .digital-clock-separator::before {
@@ -65,29 +61,12 @@ $color: #f90;
 .digital-clock-weekday {
     margin: 0;
     padding: 0;
-    filter: brightness(15%);
-    color: hsl(var(--color-h), var(--color-s), var(--color-l));
+    filter: brightness(25%);
+    color: var(--color-inverted);
 }
 
 .digital-clock-weekday--on {
     filter: brightness(100%);
-    text-shadow: 0 0 8px hsl(var(--color-h), var(--color-s), var(--color-l));
-}
-
-#color {
-    visibility: hidden;
-}
-
-label {
-    float: right;
-    color: hsl(var(--color-h), var(--color-s), var(--color-l));
-    filter: brightness(15%);
-    transition: filter 0.1s linear;
-    cursor: pointer;
-    // font-style: italic;
-
-    &:hover {
-        filter: brightness(80%);
-        text-shadow: 0 0 8px hsl(var(--color-h), var(--color-s), var(--color-l));
-    }
+    color: var(--color-inverted);
+    text-shadow: 0 0 8px var(--color-inverted);
 }
